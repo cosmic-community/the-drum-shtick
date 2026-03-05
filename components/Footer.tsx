@@ -47,6 +47,15 @@ export default function Footer() {
                   Customer Reviews
                 </Link>
               </li>
+              <li>
+                {/* Changed: Added About Us link */}
+                <Link
+                  href="/about"
+                  className="text-sm text-charcoal-400 hover:text-drum-400 transition-colors"
+                >
+                  About Us
+                </Link>
+              </li>
             </ul>
           </div>
 
