@@ -12,6 +12,7 @@ export default function Header() {
     { href: '/categories', label: 'Categories' },
     { href: '/reviews', label: 'Reviews' },
     { href: '/about', label: 'About' },
+    { href: '/contact', label: 'Contact' }, // Changed: Added Contact link
   ];
 
   return (
