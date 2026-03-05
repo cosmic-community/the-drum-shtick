@@ -71,6 +71,26 @@ export async function getProductsByCategory(categoryId: string): Promise<Product
   }
 }
 
+// Changed: Added searchProducts function for the search feature
+export async function searchProducts(query?: string): Promise<Product[]> {
+  try {
+    const findParams: Record<string, unknown> = { type: 'products' };
+    if (query && query.trim().length > 0) {
+      findParams['title'] = { $regex: query.trim(), $options: 'i' };
+    }
+    const response = await cosmic.objects
+      .find(findParams)
+      .props(['id', 'title', 'slug', 'metadata', 'created_at', 'modified_at', 'type'])
+      .depth(1);
+    return response.objects as Product[];
+  } catch (error: unknown) {
+    if (hasStatus(error) && error.status === 404) {
+      return [];
+    }
+    throw new Error('Failed to search products');
+  }
+}
+
 // Categories
 export async function getCategories(): Promise<ProductCategory[]> {
   try {

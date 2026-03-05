@@ -11,7 +11,7 @@ export default function Header() {
     { href: '/products', label: 'Products' },
     { href: '/categories', label: 'Categories' },
     { href: '/reviews', label: 'Reviews' },
-    { href: '/about', label: 'About' }, // Changed: Added About link
+    { href: '/about', label: 'About' },
   ];
 
   return (
@@ -39,37 +39,81 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
+            {/* Changed: Added search icon link in desktop nav */}
+            <Link
+              href="/search"
+              className="ml-2 p-2 rounded-lg text-charcoal-300 hover:text-white hover:bg-charcoal-800 transition-colors duration-200"
+              aria-label="Search products"
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </Link>
           </nav>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg text-charcoal-300 hover:text-white hover:bg-charcoal-800 transition-colors"
-            aria-label="Toggle menu"
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          {/* Mobile Right Actions */}
+          <div className="flex items-center gap-1 md:hidden">
+            {/* Changed: Added mobile search icon */}
+            <Link
+              href="/search"
+              className="p-2 rounded-lg text-charcoal-300 hover:text-white hover:bg-charcoal-800 transition-colors"
+              aria-label="Search products"
             >
-              {mobileMenuOpen ? (
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                 />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
-          </button>
+              </svg>
+            </Link>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 rounded-lg text-charcoal-300 hover:text-white hover:bg-charcoal-800 transition-colors"
+              aria-label="Toggle menu"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                {mobileMenuOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
@@ -86,6 +130,17 @@ export default function Header() {
                   {link.label}
                 </Link>
               ))}
+              {/* Changed: Added search link in mobile menu */}
+              <Link
+                href="/search"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-4 py-3 rounded-lg text-sm font-medium text-charcoal-200 hover:text-white hover:bg-charcoal-800 transition-colors flex items-center gap-2"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                Search
+              </Link>
             </nav>
           </div>
         )}
