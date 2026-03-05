@@ -50,13 +50,22 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Contact & Legal */}
           <div>
             <h3 className="text-white font-semibold mb-4">Get in Touch</h3>
-            <p className="text-sm text-charcoal-400 leading-relaxed">
+            <p className="text-sm text-charcoal-400 leading-relaxed mb-4">
               Have questions about our products? We&#39;re here to help you find
               the perfect gear for your drumming journey.
             </p>
+            {/* Changed: Added Terms of Service link */}
+            <div className="pt-2 border-t border-charcoal-800">
+              <Link
+                href="/terms"
+                className="text-sm text-charcoal-400 hover:text-drum-400 transition-colors"
+              >
+                Terms of Service
+              </Link>
+            </div>
           </div>
         </div>
 

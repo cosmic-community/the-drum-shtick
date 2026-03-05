@@ -1,5 +1,5 @@
 import { createBucketClient } from '@cosmicjs/sdk';
-import type { Product, ProductCategory, CustomerReview } from '@/types';
+import type { Product, ProductCategory, CustomerReview, Page } from '@/types';
 
 export const cosmic = createBucketClient({
   bucketSlug: process.env.COSMIC_BUCKET_SLUG as string,
@@ -130,5 +130,21 @@ export async function getReviewsByProduct(productId: string): Promise<CustomerRe
       return [];
     }
     throw new Error('Failed to fetch reviews by product');
+  }
+}
+
+// Pages
+export async function getPageBySlug(slug: string): Promise<Page | null> {
+  try {
+    const response = await cosmic.objects
+      .findOne({ type: 'pages', slug })
+      .props(['id', 'title', 'slug', 'metadata', 'created_at', 'modified_at', 'type'])
+      .depth(1);
+    return response.object as Page;
+  } catch (error: unknown) {
+    if (hasStatus(error) && error.status === 404) {
+      return null;
+    }
+    throw new Error('Failed to fetch page');
   }
 }

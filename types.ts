@@ -17,6 +17,7 @@ export interface CosmicImage {
 export interface ProductCategory extends CosmicObject {
   type: 'product-categories';
   metadata: {
+    [key: string]: unknown; // Changed: Added index signature for Record<string, unknown> compatibility
     name?: string;
     description?: string;
     category_image?: CosmicImage;
@@ -26,6 +27,7 @@ export interface ProductCategory extends CosmicObject {
 export interface Product extends CosmicObject {
   type: 'products';
   metadata: {
+    [key: string]: unknown; // Changed: Added index signature for Record<string, unknown> compatibility
     product_name?: string;
     description?: string;
     price?: number;
@@ -41,6 +43,7 @@ export interface Product extends CosmicObject {
 export interface CustomerReview extends CosmicObject {
   type: 'customer-reviews';
   metadata: {
+    [key: string]: unknown; // Changed: Added index signature for Record<string, unknown> compatibility
     reviewer_name?: string;
     rating?: number;
     review?: string;
@@ -53,4 +56,14 @@ export interface CosmicResponse<T> {
   total: number;
   limit: number;
   skip: number;
+}
+
+// Changed: Added Page types (merged from types/index.ts)
+export interface Page extends CosmicObject {
+  metadata: {
+    [key: string]: unknown; // Changed: Added index signature for Record<string, unknown> compatibility
+    heading: string;
+    content: string;
+    last_updated: string;
+  };
 }
