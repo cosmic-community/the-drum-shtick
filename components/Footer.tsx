@@ -56,6 +56,15 @@ export default function Footer() {
                   About Us
                 </Link>
               </li>
+              <li>
+                {/* Changed: Added Contact link */}
+                <Link
+                  href="/contact"
+                  className="text-sm text-charcoal-400 hover:text-drum-400 transition-colors"
+                >
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -66,6 +75,25 @@ export default function Footer() {
               Have questions about our products? We&#39;re here to help you find
               the perfect gear for your drumming journey.
             </p>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-1 text-sm text-drum-400 hover:text-drum-300 font-medium transition-colors mb-4"
+            >
+              Contact Us
+              <svg
+                className="w-3.5 h-3.5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </Link>
             {/* Changed: Added Terms of Service link */}
             <div className="pt-2 border-t border-charcoal-800">
               <Link
